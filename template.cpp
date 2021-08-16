@@ -141,9 +141,19 @@ void mergeSort(int arr[],int l,int r){          // to be used only for larger ar
     mergeSort(arr,m+1,r);
     merge(arr,l,m,r);
 }
+
+void solve(){
+    //code here.
+}
+
 //signed main(){             //if using long long
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    int t;  
+    cin >> t;   
+    while(t--){ //default test cases pattern change if neccassary
+        solve();
+    }
     return 0;
 }
