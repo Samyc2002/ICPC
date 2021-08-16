@@ -24,6 +24,7 @@
 
 using namespace std;
 
+//#define int long long
 #define gfoi(i, j, k, in) for (int i=j ; i<k ; i+=in)
 #define gfod(i, j, k, in) for (int i=j ; i>=k ; i-=in)
 #define foi(i, j) gfoi(i, 0, j, 1)
@@ -36,10 +37,9 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<string> vs;
 typedef vector<vi> vii;
-typedef long int l;
-typedef unsigned long int ul;
-typedef long long int ll;
-typedef unsigned long long int  ull;
+//typedef long int l;
+//typedef unsigned long int ul;
+//typedef unsigned long long int  ull;
 typedef pair<int, int> pii;
 typedef map<int, int>::iterator mi;
 
@@ -141,7 +141,7 @@ void mergeSort(int arr[],int l,int r){          // to be used only for larger ar
     mergeSort(arr,m+1,r);
     merge(arr,l,m,r);
 }
-
+//signed main(){             //if using long long
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
