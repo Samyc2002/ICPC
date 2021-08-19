@@ -52,7 +52,7 @@ void solve(){
 	float h, t, angle;
 	float pi = 3.1415926535897932384626433832795;
 	cin >> h >> t >> angle;
-	angle = pi * (angle / 180.0);
+	angle = pi * (angle / 180.0f);
 
 	float gy, gx, distx, disty, tp, uy, ux, nb;
 	int n;
@@ -62,20 +62,19 @@ void solve(){
 	uy = pow(20 * h, 0.5f) * cos(angle);
 	ux = pow(20 * h, 0.5f) * sin(angle);
 	tp = time_period(uy, gy);
-	nb = t / tp; // number of bounces
+	nb = t / tp;
 	n = (int)(t / tp);
 	float rem = nb-n;
 	
 	distx = 0;
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		distx += range(ux, tp, gx);	
 		ux = velx(ux, gx, tp);
 	}
 	distx += range(ux, rem, gx);
 	disty = height(uy, rem, gy);
-	float dist = pow(distx * distx + disty * disty, 0.5);
-	cout << dist << endl;
+	float dist = pow(distx * distx + disty * disty, 0.5f);
+	printf("%.10f\n",dist);
 }
 
 int main() {
