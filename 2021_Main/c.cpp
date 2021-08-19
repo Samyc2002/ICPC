@@ -52,7 +52,11 @@ void solve(){
 	float h, t, angle;
 	float pi = 3.1415926535897932384626433832795;
 	cin >> h >> t >> angle;
+<<<<<<< HEAD
 	angle = pi * (angle / 180.0f);
+=======
+	angle = pi * (angle / 180.0); //to radian
+>>>>>>> aeca704dd54035f0928287846178dd93770e8cce
 
 	float gy, gx, distx, disty, tp, uy, ux, nb;
 	int n;
