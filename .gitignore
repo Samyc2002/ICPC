@@ -1,6 +1,6 @@
 */*.exe
 *.exe
-*/*.out
+**/*.out
 *.out
 .vscode
 .idea

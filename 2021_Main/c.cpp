@@ -24,60 +24,55 @@
 
 using namespace std;
 
-float height(float uy, float t, float gy)
+double height(double uy, double t, double gy)
 {
-	float h = (uy * t)	- 0.5 * gy * t * t;
+	double h = (uy * t)	- 0.5 * gy * t * t;
 	return h;
 }
 
-float time_period(float uy, float gy)
+double time_period(double uy, double gy)
 {
-	float t = 2 * (uy / gy);
+	double t = (2 * uy) / gy;
 	return t;
 }
 
-float range(float ux, float t, float gx)
+double range(double ux, double t, double gx)
 {
-	float r = ux * t + 0.5 * gx * t * t;	
+	double r = ux * t + 0.5 * gx * t * t;	
 	return r;
 }
 
-float velx(float ux, float gx, float t)
+double velx(double ux, double gx, double t)
 {
-	float v = ux + gx * t;
+	double v = ux + gx * t;
 	return v;
 }
 void solve(){
     //code here.
-	float h, t, angle;
-	float pi = 3.1415926535897932384626433832795;
-	cin >> h >> t >> angle;
-<<<<<<< HEAD
-	angle = pi * (angle / 180.0f);
-=======
-	angle = pi * (angle / 180.0); //to radian
->>>>>>> aeca704dd54035f0928287846178dd93770e8cce
+	double h, t, angle;
+	double pi = 3.1415926535897932384626433832795;
 
-	float gy, gx, distx, disty, tp, uy, ux, nb;
-	int n;
+	cin >> h >> t >> angle;
+	angle = (pi * angle) / 180.0f;
+
+	double gy, gx, distx, disty, tp, uy, ux, nb = 0, rem = t;
 
 	gy = 10 * cos(angle);
 	gx = 10 * sin(angle);
 	uy = pow(20 * h, 0.5f) * cos(angle);
 	ux = pow(20 * h, 0.5f) * sin(angle);
 	tp = time_period(uy, gy);
-	nb = t / tp;
-	n = (int)(t / tp);
-	float rem = nb-n;
-	
-	distx = 0;
-	for (int i = 0; i < n; i++) {
-		distx += range(ux, tp, gx);	
-		ux = velx(ux, gx, tp);
+
+	while (rem > tp)
+	{
+		rem -= tp;
+		nb++;
 	}
-	distx += range(ux, rem, gx);
+
+	distx = range(ux, t, gx);
 	disty = height(uy, rem, gy);
-	float dist = pow(distx * distx + disty * disty, 0.5f);
+
+	double dist = pow(distx * distx + disty * disty, 0.5f);
 	printf("%.10f\n",dist);
 }
 
