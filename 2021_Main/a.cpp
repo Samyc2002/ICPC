@@ -146,7 +146,7 @@ void solve(){
     //code here.
 }
 
-//signed main(){             //if using long long
+//int32_t main(){             //if using long long
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
