@@ -50,27 +50,27 @@ float velx(float ux, float gx, float t)
 void solve(){
     //code here.
 	float h, t, angle;
-	float pi = 3.141592654;
+	float pi = 3.1415926535897932384626433832795;
 	cin >> h >> t >> angle;
 	angle = pi * (angle / 180.0); //to radian
 
-	float gy, gx, distx, disty, tp, uy, ux, nb; 
+	float gy, gx, distx, disty, tp, uy, ux, nb;
+	int n;
 
 	gy = 10 * cos(angle);
-	gx = pow(100 - gy * gy, 0.5);	
-	uy = pow(20 * h, 0.5) * cos(angle);
-	ux = pow(20 * h, 0.5) * sin(angle);
-	tp = time_period(uy, gy);	
+	gx = 10 * sin(angle);
+	uy = pow(20 * h, 0.5f) * cos(angle);
+	ux = pow(20 * h, 0.5f) * sin(angle);
+	tp = time_period(uy, gy);
 	nb = t / tp; // number of bounces
+	n = (int)(t / tp);
+	float rem = nb-n;
 	
 	distx = 0;
-	float rem;
-	for (int i = 0; i < nb; i++)
+	for (int i = 0; i < n; i++)
 	{
 		distx += range(ux, tp, gx);	
-		ux = velx(ux, gx, tp);	
-		if ((i + 2) * tp - t < tp)
-			rem = tp - (i + 2) * tp + t;
+		ux = velx(ux, gx, tp);
 	}
 	distx += range(ux, rem, gx);
 	disty = height(uy, rem, gy);
