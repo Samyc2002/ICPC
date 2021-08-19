@@ -154,18 +154,24 @@ void solve() {
             cout << "YES" << endl;
         } else {
             sort(all(arr));
-            int flag = 0;
-            foi(i, n) {
+            int flag = 1;
+            int i = 0;
+            while(i < n && flag == 1) {
                 if(arr[i].second%2 != i%2) {
-                    int k = i+1;
-                    while(arr[k].first == arr[k+1].first) {
-                        
-                        if(arr[k].second%2 == i%2) {
-                            flag = 1;
+                    int k = i+1,found = 0;
+                    while(arr[i].first == arr[k].first && found == 0) { 
+                        if(arr[k].second%2 == i%2){
+                            arr[k].second = arr[i].second;
+                            found = 1;
                         }
                         k++;
                     }
+                    if(found == 0){
+                        flag = 0;
+                         break;
+                    }
                 }
+                i++;
             }
             if(flag == 1) {
                 cout << "YES" << endl;
@@ -175,6 +181,7 @@ void solve() {
         }
     }
 }
+
 
 int main() {
     ios_base::sync_with_stdio(false);
