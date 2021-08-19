@@ -24,37 +24,37 @@
 
 using namespace std;
 
-double height(double uy, double t, double gy)
+float height(float uy, float t, float gy)
 {
-	double h = (uy * t)	- 0.5 * gy * t * t;
+	float h = (uy * t)	- 0.5 * gy * t * t;
 	return h;
 }
 
-double time_period(double uy, double gy)
+float time_period(float uy, float gy)
 {
-	double t = 2 * (uy / gy);
+	float t = 2 * (uy / gy);
 	return t;
 }
 
-double range(double ux, double t, double gx)
+float range(float ux, float t, float gx)
 {
-	double r = ux * t + 0.5 * gx * t * t;	
+	float r = ux * t + 0.5 * gx * t * t;	
 	return r;
 }
 
-double velx(double ux, double gx, double t)
+float velx(float ux, float gx, float t)
 {
-	double v = ux + gx * t;
+	float v = ux + gx * t;
 	return v;
 }
 void solve(){
     //code here.
-	double h, t, angle;
-	double pi = 3.141592654;
+	float h, t, angle;
+	float pi = 3.141592654;
 	cin >> h >> t >> angle;
-	angle = pi * (angle / 180.0);
+	angle = pi * (angle / 180.0); //to radian
 
-	double gy, gx, distx, disty, tp, uy, ux, nb;
+	float gy, gx, distx, disty, tp, uy, ux, nb; 
 
 	gy = 10 * cos(angle);
 	gx = pow(100 - gy * gy, 0.5);	
@@ -64,7 +64,7 @@ void solve(){
 	nb = t / tp; // number of bounces
 	
 	distx = 0;
-	double rem;
+	float rem;
 	for (int i = 0; i < nb; i++)
 	{
 		distx += range(ux, tp, gx);	
@@ -74,7 +74,7 @@ void solve(){
 	}
 	distx += range(ux, rem, gx);
 	disty = height(uy, rem, gy);
-	double dist = pow(distx * distx + disty * disty, 0.5);
+	float dist = pow(distx * distx + disty * disty, 0.5);
 	cout << dist << endl;
 }
 
